@@ -1,0 +1,150 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <main class="stage">
+    <div class="seal" aria-hidden="true"><span>D</span></div>
+    <h1 class="name">Delvaux</h1>
+    <div class="rule-row">
+      <div class="rule"></div>
+      <span class="domain">delvaux.one</span>
+      <div class="rule"></div>
+    </div>
+    <p class="tagline">A family address, under construction. More to come soon.</p>
+  </main>
+
+  <footer>&copy; 2026 Delvaux</footer>
+</Layout>
+
+<style>
+  .stage {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.9rem;
+  }
+
+  /* Seal mark */
+  .seal {
+    width: 86px;
+    height: 86px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 32% 30%, var(--steel), var(--dusk) 78%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 10px 32px -8px rgba(39, 76, 119, 0.45);
+    opacity: 0;
+    transform: scale(0.85);
+    animation: sealIn 0.9s cubic-bezier(0.2, 0.9, 0.25, 1) 0.15s forwards;
+  }
+
+  .seal::before {
+    content: "";
+    position: absolute;
+    inset: 9px;
+    border-radius: 50%;
+    border: 1px solid rgba(163, 206, 241, 0.55);
+  }
+
+  .seal span {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--platinum);
+    line-height: 1;
+    transform: translateY(-2px);
+  }
+
+  @keyframes sealIn {
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .name {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+    font-size: clamp(2.4rem, 7vw, 4.2rem);
+    letter-spacing: 0.12em;
+    color: var(--dusk);
+    text-transform: uppercase;
+    opacity: 0;
+    animation: riseIn 0.8s ease-out 0.45s forwards;
+  }
+
+  .rule-row {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    opacity: 0;
+    animation: riseIn 0.8s ease-out 0.65s forwards;
+  }
+
+  .rule {
+    width: 30px;
+    height: 1px;
+    background: var(--olive);
+    opacity: 0.55;
+    flex-shrink: 0;
+  }
+
+  .domain {
+    font-family: "Inter", sans-serif;
+    font-size: 0.92rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--steel);
+    font-weight: 500;
+  }
+
+  .tagline {
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
+    color: var(--olive);
+    max-width: 360px;
+    line-height: 1.6;
+    opacity: 0;
+    animation: riseIn 0.8s ease-out 0.85s forwards;
+  }
+
+  @keyframes riseIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  footer {
+    position: fixed;
+    bottom: 1.6rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--olive);
+    opacity: 0.65;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .seal,
+    .name,
+    .rule-row,
+    .tagline {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+</style>
